@@ -1,3 +1,3 @@
-# DOM Tracker
+# ElementaryWatson
 
-The ultimate in DOM tracking!
+The ultimate in DOM Element tracking!
