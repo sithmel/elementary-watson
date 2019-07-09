@@ -34,4 +34,14 @@ describe('isFixed', () => {
     const result = isFixed(element)
     assert.isTrue(result)
   })
+  it('should ignore svg', () => {
+    const svg1 = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg1.setAttribute("width", "100");
+    svg1.setAttribute("height", "100");
+    const cir1 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    svg1.appendChild(cir1);
+    canvas.appendChild(svg1)
+    const result = isFixed(cir1)
+    assert.isFalse(result)
+  })
 })
