@@ -87,10 +87,14 @@ module.exports = function (config) {
       },
       bs_android: {
         base: 'BrowserStack',
-        device: 'Google Pixel 2',
-        os: 'Android',
-        os_version: '9.0',
-        captureTimeout: 120
+        // device: 'Google Pixel 2',
+        // os: 'android',
+        // os_version: '9.0',
+        // realMobile: true,
+        device: 'Samsung Galaxy S5',
+        os: 'android',
+        os_version: '4.4',
+        captureTimeout: 240
       }
     },
     browsers: [

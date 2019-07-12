@@ -34,7 +34,7 @@ describe('isFixed', () => {
     const result = isFixed(element)
     assert.isTrue(result)
   })
-  it('should ignore svg', () => {
+  it('should work with svg', () => {
     const svg1 = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
     svg1.setAttribute('width', '100')
     svg1.setAttribute('height', '100')
