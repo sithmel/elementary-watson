@@ -52,4 +52,29 @@ describe('ElementTracker', () => {
     const args = callback.args[0][0]
     assert.containsAllKeys(args, ['x', 'y', 'width', 'height', 'isFixed'])
   })
+
+  it('calls getPosition on a given element twice when the element moves', async () => {
+    const callback = sinon.spy()
+    const element = document.createElement('div')
+    canvas.appendChild(element)
+    const elementTracker = new ElementTracker(element)
+    elementTracker.start(callback)
+    await wait(100)
+    element.style.marginTop = '20px'
+    await wait(100)
+    assert.isTrue(callback.calledTwice)
+  })
+
+  it('does not call getPosition once stop has been called', async () => {
+    const callback = sinon.spy()
+    const element = document.createElement('div')
+    canvas.appendChild(element)
+    const elementTracker = new ElementTracker(element)
+    elementTracker.start(callback)
+    await wait(100)
+    elementTracker.stop()
+    element.style.marginTop = '20px'
+    await wait(100)
+    assert.isTrue(callback.calledOnce)
+  })
 })
