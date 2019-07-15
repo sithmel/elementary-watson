@@ -1,5 +1,7 @@
 /* eslint-env browser, mocha */
 /* global assert */
+import sinon from 'sinon'
+import wait from 'waait';
 import ElementTracker from '../lib/elementTracker'
 
 describe('ElementTracker', () => {
@@ -29,7 +31,7 @@ describe('ElementTracker', () => {
     assert.equal(elementTracker.element, element)
   })
 
-  it('is throwing an error when calling track twice', () => {
+  it('is throwing an error when calling start twice', () => {
     const element = document.createElement('div')
     canvas.appendChild(element)
     const elementTracker = new ElementTracker(element)
@@ -37,5 +39,17 @@ describe('ElementTracker', () => {
     assert.throws(() => {
       elementTracker.start(() => {})
     }, 'You are already tracking this element. To change callback you should stop tracking')
+  })
+
+  it('calls getPosition on a given element only once', async () => {
+    const callback = sinon.spy()
+    const element = document.createElement('div')
+    canvas.appendChild(element)
+    const elementTracker = new ElementTracker(element)
+    elementTracker.start(callback)
+    await wait(200)
+    assert.isTrue(callback.calledOnce)
+    const args = callback.args[0][0]
+    assert.containsAllKeys(args, ['x', 'y', 'width', 'height', 'isFixed'])
   })
 })
