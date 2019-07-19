@@ -6,8 +6,8 @@ describe('getPosition', () => {
   let canvas
 
   beforeEach(() => {
-    document.body.style.margin = 0
-    document.body.style.padding = 0
+    document.body.style.margin = '0'
+    document.body.style.padding = '0'
 
     canvas = document.createElement('div')
     canvas.style.marginTop = '10px'

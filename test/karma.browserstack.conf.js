@@ -12,7 +12,10 @@ module.exports = function (config) {
     webpack: {
       optimization: { minimize: false },
       resolve: {
-        extensions: ['.js']
+        extensions: ['.js'],
+        alias: {
+          sinon: 'sinon/pkg/sinon.js'
+        }
       },
       module: {
         rules: [
@@ -26,9 +29,14 @@ module.exports = function (config) {
               loader: 'babel-loader',
               options: {
                 babelrc: false,
-                presets: [['@babel/preset-env', { modules: false }]],
-                plugins: [
-                  '@babel/plugin-transform-runtime'
+                presets: [
+                  [
+                    '@babel/preset-env', {
+                      useBuiltIns: 'usage',
+                      corejs: 2,
+                      modules: false
+                    }
+                  ]
                 ]
               }
             }
@@ -98,12 +106,12 @@ module.exports = function (config) {
       }
     },
     browsers: [
-      'bs_chrome_win',
-      'bs_chrome_mac',
-      'bs_safari_mac',
-      'bs_ie_win',
-      'bs_edge_win',
-      'bs_iphone7'
+      // 'bs_chrome_win',
+      // 'bs_chrome_mac',
+      // 'bs_safari_mac',
+      // 'bs_ie_win',
+      // 'bs_edge_win',
+      'bs_iphone7',
       // 'bs_android'
     ],
     singleRun: true

@@ -1,16 +1,14 @@
 /* eslint-env browser, mocha */
 /* global assert */
 import sinon from 'sinon'
-import wait from 'waait';
 import ElementTracker from '../lib/elementTracker'
+
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 describe('ElementTracker', () => {
   let canvas
 
   beforeEach(() => {
-    document.body.style.margin = 0
-    document.body.style.padding = 0
-
     canvas = document.createElement('div')
     canvas.style.height = '2000px'
     document.body.appendChild(canvas)
