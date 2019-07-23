@@ -106,12 +106,12 @@ module.exports = function (config) {
       }
     },
     browsers: [
-      // 'bs_chrome_win',
-      // 'bs_chrome_mac',
-      // 'bs_safari_mac',
-      // 'bs_ie_win',
-      // 'bs_edge_win',
-      'bs_iphone7',
+      'bs_chrome_win',
+      'bs_chrome_mac',
+      'bs_safari_mac',
+      'bs_ie_win',
+      'bs_edge_win',
+      // 'bs_iphone7'
       // 'bs_android'
     ],
     singleRun: true

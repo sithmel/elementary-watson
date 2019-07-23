@@ -1,5 +1,1 @@
-const isFixed = require('./lib/isFixed')
-
-module.exports = {
-  isFixed
-}
+export { default as elementTracker } from './lib/elementTracker'

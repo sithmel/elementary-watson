@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "module": "index.js",
+  "jsnext:main": "index.js",
   "scripts": {
     "test": "karma start --single-run --browsers ChromeHeadless test/karma.conf.js",
     "test:browserstack": "karma start test/karma.browserstack.conf.js",

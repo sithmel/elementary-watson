@@ -63,6 +63,30 @@ describe('ElementTracker', () => {
     assert.isTrue(callback.calledTwice)
   })
 
+  it('calls getPosition on a given element twice when the element is animated', async () => {
+    canvas.innerHTML = `<style>
+      @keyframes slidein {
+        from { margin-top: 0; }
+        to   { margin-top: 20px; }
+      }
+
+      .animated {
+        animation: 200ms slidein;
+      }
+    </style>`
+    const callback = sinon.spy()
+    const element = document.createElement('div')
+    element.className = 'animated'
+    canvas.appendChild(element)
+    const elementTracker = new ElementTracker(element)
+    elementTracker.start(callback)
+    await wait(100)
+    const nPositionChanges = callback.callCount
+    assert.isAbove(nPositionChanges, 1)
+    await wait(100)
+    assert.isAbove(callback.callCount, nPositionChanges)
+  })
+
   it('does not call getPosition once stop has been called', async () => {
     const callback = sinon.spy()
     const element = document.createElement('div')
