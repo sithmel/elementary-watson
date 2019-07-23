@@ -83,7 +83,7 @@ describe('ElementTracker', () => {
     await wait(100)
     const nPositionChanges = callback.callCount
     assert.isAbove(nPositionChanges, 1)
-    await wait(100)
+    await wait(200)
     assert.isAbove(callback.callCount, nPositionChanges)
   })
 
