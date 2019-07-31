@@ -1,1 +1,2 @@
-export { default as elementTracker } from './lib/elementTracker'
+import elementTracker from './lib/elementTracker'
+export default elementTracker
